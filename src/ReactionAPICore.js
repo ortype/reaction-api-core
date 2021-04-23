@@ -427,7 +427,11 @@ export default class ReactionAPICore {
 
     // Serve files in the /public folder statically
     for (const staticPath of serveStaticPaths) {
-      this.expressApp.use(express.static(staticPath));
+      this.expressApp.use(express.static(staticPath, {
+        setHeaders: (res) => {
+          res.setHeader("Access-Control-Allow-Origin", "*")
+        }
+      }));
     }
   }
 
