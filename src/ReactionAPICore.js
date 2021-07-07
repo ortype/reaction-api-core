@@ -427,6 +427,7 @@ export default class ReactionAPICore {
 
     // Serve files in the /public folder statically
     for (const staticPath of serveStaticPaths) {
+      Logger.info(`CORS allowed for loading webfonts from API in storefront`)
       this.expressApp.use(express.static(staticPath, {
         setHeaders: (res) => {
           res.setHeader("Access-Control-Allow-Origin", "*")
